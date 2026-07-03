@@ -19,7 +19,7 @@
     <!-- LOGO -->
     <a class="logo" href="#top">
       <!-- Substitui src pelo PNG do cliente: assets/images/logo-electrolink.png -->
-      <img class="logo-img" src="assets/images/team/logo el.png" alt="ElectroLink"
+      <img class="logo-img" src="assets/images/logo-electrolink.png" alt="ElectroLink"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
       <span class="logo-text-fallback">
         <span class="logo-word">Electro<span>Link</span></span>
@@ -71,7 +71,7 @@
   <section class="hero">
     <!-- Vídeo de fundo: colocar ficheiro em assets/video/apresentacao.mp4 -->
     <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="assets/video/apresentação.mp4" type="video/mp4">
+      <source src="assets/video/apresentacao.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
 
@@ -111,7 +111,7 @@
     <div class="video-modal-inner">
       <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
       <video id="presentationVideo" controls preload="none">
-        <source src="assets/video/apresentação.mp4" type="video/mp4">
+        <source src="assets/video/apresentacao.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -186,7 +186,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Manutenção</span>
-          <img class="svc-photo" src="assets/images/servicos/manu.jpeg" alt="Manutenção eléctrica"
+          <img class="svc-photo" src="assets/images/servicos/manutencao-electrica.jpg" alt="Manutenção eléctrica"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -201,7 +201,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Climatização</span>
-          <img class="svc-photo" src="assets/images/servicos/refri.jpeg" alt="Refrigeração"
+          <img class="svc-photo" src="assets/images/servicos/refrigeracao.jpg" alt="Refrigeração"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -421,12 +421,21 @@
         </div>
       </div>
       <form class="contact-form" id="contactForm">
-        <div class="form-group"><label>Nome completo</label><input type="text" required placeholder="O seu nome"></div>
-        <div class="form-group"><label>Telefone</label><input type="tel" required placeholder="84 000 0000"></div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="oseu@email.com"></div>
         <div class="form-group">
-          <label>Serviço pretendido</label>
-          <select required>
+          <label for="f-nome">Nome completo</label>
+          <input id="f-nome" type="text" name="nome" required placeholder="O seu nome">
+        </div>
+        <div class="form-group">
+          <label for="f-tel">Telefone</label>
+          <input id="f-tel" type="tel" name="telefone" required placeholder="84 000 0000">
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email</label>
+          <input id="f-email" type="email" name="email" placeholder="oseu@email.com">
+        </div>
+        <div class="form-group">
+          <label for="f-servico">Serviço pretendido</label>
+          <select id="f-servico" name="servico" required>
             <option value="">Selecione uma opção</option>
             <option>Instalação Eléctrica</option>
             <option>Projecto de Instalação Eléctrica</option>
@@ -435,8 +444,17 @@
             <option>Outro</option>
           </select>
         </div>
-        <div class="form-group"><label>Localidade</label><input type="text" placeholder="Cidade / Bairro"></div>
-        <div class="form-group"><label>Mensagem</label><textarea rows="4" placeholder="Descreva brevemente o que precisa"></textarea></div>
+        <div class="form-group">
+          <label for="f-local">Localidade</label>
+          <input id="f-local" type="text" name="localidade" placeholder="Cidade / Bairro">
+        </div>
+        <div class="form-group">
+          <label for="f-msg">Mensagem</label>
+          <textarea id="f-msg" name="mensagem" rows="4" placeholder="Descreva brevemente o que precisa"></textarea>
+        </div>
+        <!-- Campo oculto para identificar a origem no email -->
+        <input type="hidden" name="_subject" value="Novo pedido de orçamento — ElectroLink">
+        <input type="hidden" name="origem" value="Formulário do website">
         <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Enviar pedido</button>
       </form>
     </div>

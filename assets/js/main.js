@@ -99,15 +99,75 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── FORMULÁRIO CONTACTO ── */
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
       btn.textContent = 'A enviar…'; btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Enviado ✓'; btn.style.background = '#1e8f4e';
-        form.reset();
-        setTimeout(() => { btn.textContent = 'Enviar pedido'; btn.disabled = false; btn.style.background = ''; }, 3000);
-      }, 1200);
+
+      // Recolher dados do formulário
+      const data = new FormData(form);
+      const nome     = form.querySelector('input[name="nome"]')?.value.trim() || '';
+      const tel      = form.querySelector('input[name="telefone"]')?.value.trim() || '';
+      const email    = form.querySelector('input[name="email"]')?.value.trim() || '';
+      const servico  = form.querySelector('select[name="servico"]')?.value || '';
+      const local    = form.querySelector('input[name="localidade"]')?.value.trim() || '';
+      const mensagem = form.querySelector('textarea[name="mensagem"]')?.value.trim() || '';
+
+      try {
+        // 1. Enviar para Formspree (email)
+        const res = await fetch('https://formspree.io/f/xykqlpwp', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' },
+        });
+
+        if (res.ok) {
+          // 2. Guardar no painel admin (clientes)
+          try {
+            const db = JSON.parse(localStorage.getItem('electrolink_admin_db'))
+              || { clientes:[], vagas:[], candidaturas:[] };
+            db.clientes.push({
+              id:      Date.now().toString(36),
+              nome:    nome || 'Sem nome',
+              tel:     tel || '—',
+              email:   email || '',
+              servico: servico || 'Contacto via website',
+              local:   local || '',
+              obs:     mensagem || '',
+              estado:  'activo',
+              data:    new Date().toISOString(),
+              origem:  'Formulário de contacto',
+            });
+            localStorage.setItem('electrolink_admin_db', JSON.stringify(db));
+          } catch(_) {}
+
+          // 3. Feedback visual
+          btn.textContent = 'Mensagem enviada ✓';
+          btn.style.background = '#1e8f4e';
+          btn.style.color = '#fff';
+          btn.style.borderColor = '#1e8f4e';
+          form.reset();
+          setTimeout(() => {
+            btn.textContent = 'Enviar pedido';
+            btn.disabled = false;
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 4000);
+        } else {
+          throw new Error('Formspree error');
+        }
+      } catch(_) {
+        btn.textContent = 'Erro — tenta novamente';
+        btn.style.background = '#c0392b';
+        btn.style.color = '#fff';
+        btn.disabled = false;
+        setTimeout(() => {
+          btn.textContent = 'Enviar pedido';
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 3000);
+      }
     });
   }
 
