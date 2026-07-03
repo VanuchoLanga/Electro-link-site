@@ -89,7 +89,9 @@ nav {
 .mobile-menu {
   display:none;
   position:fixed;
-  top:68px; left:0; right:0; bottom:0;
+  top:68px; left:0; right:0;
+  /* altura automática — não ocupa tela inteira nem bloqueia scroll */
+  max-height:calc(100vh - 68px);
   background:var(--navy-deep);
   z-index:199;
   overflow-y:auto;

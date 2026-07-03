@@ -14,9 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openMenu() {
     mobileMenu.classList.add('open');
-    mobileMenu.setAttribute('aria-hidden', 'false');
     burger.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('modal-open');
+    // NÃO bloqueamos o body scroll — o menu é overlay mas o site continua a rolar
     const s = burger.querySelectorAll('span');
     s[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
     s[1].style.opacity   = '0';
@@ -25,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeMenu() {
     mobileMenu.classList.remove('open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
     burger.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('modal-open');
     const s = burger.querySelectorAll('span');
     s[0].style.transform = '';
     s[1].style.opacity   = '';
@@ -38,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Fechar ao clicar num link
+  // Fechar ao clicar em qualquer link do menu
   mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      closeMenu();
-      // pequeno delay para o scroll funcionar
-      setTimeout(() => {}, 100);
-    });
+    a.addEventListener('click', () => closeMenu());
   });
+
+  // Fechar ao clicar no botão CTA do menu
+  const mobileCta = document.getElementById('mobileCta');
+  if (mobileCta) mobileCta.addEventListener('click', () => closeMenu());
 
   /* ── MODAL OPORTUNIDADES ── */
   const modalOp  = document.getElementById('modalOportunidades');
@@ -54,19 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function openOportunidades(e) {
     if (e) e.preventDefault();
     modalOp.classList.add('open');
-    modalOp.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
     renderVagasPublicas();
   }
   function closeOportunidades() {
     modalOp.classList.remove('open');
-    modalOp.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
   }
 
   document.querySelectorAll('.js-open-oportunidades').forEach(b => b.addEventListener('click', openOportunidades));
-  closeBtn.addEventListener('click', closeOportunidades);
-  modalOp.addEventListener('click', e => { if (e.target === modalOp) closeOportunidades(); });
+  if (closeBtn) closeBtn.addEventListener('click', closeOportunidades);
+  if (modalOp)  modalOp.addEventListener('click', e => { if (e.target === modalOp) closeOportunidades(); });
 
   /* ── MODAL VÍDEO ── */
   const videoModal = document.getElementById('videoModal');
@@ -74,19 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPlay    = document.getElementById('btnPlay');
   const closeVid   = document.getElementById('videoModalClose');
 
-  btnPlay.addEventListener('click', () => {
-    videoModal.classList.add('open');
-    document.body.classList.add('modal-open');
-    videoEl.play().catch(() => {});
-  });
+  if (btnPlay) {
+    btnPlay.addEventListener('click', () => {
+      videoModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (videoEl) videoEl.play().catch(() => {});
+    });
+  }
+
   function closeVideo() {
     videoModal.classList.remove('open');
-    document.body.classList.remove('modal-open');
-    videoEl.pause();
-    videoEl.currentTime = 0;
+    document.body.style.overflow = '';
+    if (videoEl) { videoEl.pause(); videoEl.currentTime = 0; }
   }
-  closeVid.addEventListener('click', closeVideo);
-  videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideo(); });
+
+  if (closeVid)   closeVid.addEventListener('click', closeVideo);
+  if (videoModal) videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideo(); });
 
   /* ── FAQ ── */
   document.querySelectorAll('.faq-q').forEach(q => {
@@ -113,16 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── ESC fecha tudo ── */
+  /* ── ESC fecha modais (não fecha menu) ── */
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeOportunidades(); closeVideo(); closeMenu(); }
+    if (e.key === 'Escape') { closeOportunidades(); closeVideo(); }
   });
 
-  /* ── VAGAS PÚBLICAS ── */
+  /* carregar vagas públicas */
   renderVagasPublicas();
 });
 
-/* ── VAGAS (lidas do localStorage preenchido pelo admin) ── */
+/* ── VAGAS PÚBLICAS ── */
 function renderVagasPublicas() {
   const container = document.getElementById('jobs-list-public');
   if (!container) return;
@@ -156,16 +154,16 @@ function renderVagasPublicas() {
 }
 
 function abrirCandidatura(vagaId, vagaTitulo) {
-  document.getElementById('cand-vaga-id').value     = vagaId;
-  document.getElementById('cand-vaga-titulo').value  = vagaTitulo;
-  document.getElementById('cand-vaga-label').textContent = vagaTitulo;
+  document.getElementById('cand-vaga-id').value          = vagaId;
+  document.getElementById('cand-vaga-titulo').value       = vagaTitulo;
+  document.getElementById('cand-vaga-label').textContent  = vagaTitulo;
   document.getElementById('candidaturaDrawer').classList.add('open');
-  document.body.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
 }
 
 function fecharCandidatura() {
   document.getElementById('candidaturaDrawer').classList.remove('open');
-  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
 }
 
 function submeterCandidatura(e) {
@@ -186,6 +184,6 @@ function submeterCandidatura(e) {
   db.candidaturas.push({ id: Date.now().toString(36), ...dados, estado:'pendente', data: new Date().toISOString() });
   localStorage.setItem('electrolink_admin_db', JSON.stringify(db));
   fecharCandidatura();
-  alert('Candidatura enviada com sucesso! Entraremos em contacto em breve.');
+  alert('Candidatura enviada! Entraremos em contacto em breve.');
   document.getElementById('formCandidatura').reset();
 }
