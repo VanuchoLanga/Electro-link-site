@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ElectroLink — Instalação eléctrica, manutenção e refrigeração em Maputo, Moçambique. Soluções técnicas com qualidade certificada.">
+  <title>ElectroLink</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- ── DECORAÇÃO LATERAL ── -->
+<div class="spine" aria-hidden="true">
+  <svg preserveAspectRatio="none">
+    <line class="spine-line" x1="1" y1="0" x2="1" y2="100%"/>
+    <line class="spine-pulse" x1="1" y1="0" x2="1" y2="100%"/>
+  </svg>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#top">
+      <!--
+        LOGOTIPO — substitui pelo PNG do cliente.
+        Ficheiro: assets/images/logo-electrolink.png
+        Altura recomendada: 38–42px, fundo transparente.
+      -->
+      <img class="logo-img" src="assets/images/team/logo el.png" alt="ElectroLink"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span style="display:none;">
+        <span class="logo-word">Electro<span>Link</span></span>
+      </span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#cobertura">Cobertura</a></li>
+      <li><a href="#processo">Como Trabalhamos</a></li>
+      <li><a href="#" class="js-open-oportunidades">Oportunidades</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-ghost" style="padding:10px 20px;font-size:15px;">Pedir Orçamento</a>
+      <button class="burger" id="burger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <!--
+      VÍDEO DE FUNDO
+      Ficheiro: assets/video/apresentacao.mp4
+      Corre em loop silencioso no fundo.
+    -->
+    <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="assets/video/apresentação.mp4" type="video/mp4">
+    </video>
+
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow" style="color:var(--gold-bright);">Maputo</div>
+        <h1>Conectamos <span class="hl">energia</span> e <span class="hl">confiança</span> em Maputo</h1>
+        <p class="lead">Electricidade, manutenção e refrigeração, soluções técnicas com segurança e qualidade certificadas.</p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">Pedir orçamento</a>
+          <a href="#servicos" class="btn btn-ghost">Ver serviços</a>
+          <!-- Abre o vídeo de apresentação completo -->
+          <button class="btn-play" id="btnPlay" aria-label="Ver vídeo de apresentação">
+            <span class="play-icon">
+              <svg viewBox="0 0 12 12"><polygon points="3,1 11,6 3,11"/></svg>
+            </span>
+            Ver apresentação
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>3</b><span>Áreas de especialidade</span></div>
+          <div class="hero-stat"><b>100%</b><span>Equipa certificada</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="bolt-badge">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M24 4L8 16v6c0 11 6.8 19.6 16 22 9.2-2.4 16-11 16-22v-6L24 4z" stroke="#f0c24b" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <path d="M26 12L15 26h7l-2 10 12-15h-7l1-9z" fill="#f0c24b"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal do vídeo de apresentação -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Vídeo de apresentação ElectroLink">
+    <div class="video-modal-inner">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
+      <video id="presentationVideo" controls preload="none">
+        <source src="assets/video/apresentação.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- ══ DIFERENCIAIS ══ -->
+  <section class="on-navy" style="padding:0;">
+    <div class="wrap" style="padding:0 24px;transform:translateY(-1px);">
+      <div class="diff-grid reveal">
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
+          <b>Segurança em 1º lugar</b>
+          <span>Normas técnicas e protocolos de segurança em cada instalação.</span>
+        </div>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.5L6 22l6-3 6 3-2.2-8.5"/></svg>
+          <b>Qualidade garantida</b>
+          <span>Materiais certificados e acabamento profissional em todo trabalho.</span>
+        </div>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <b>Agilidade no atendimento</b>
+          <span>Resposta rápida e prazos cumpridos em cada projecto.</span>
+        </div>
+        <div class="diff-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="9" r="2.4"/><path d="M22 20c0-2.6-1.7-4.6-4-5.4"/></svg>
+          <b>Profissionais qualificados</b>
+          <span>Técnicos experientes, formados e em actualização constante.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVIÇOS ══ -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Os nossos serviços</div>
+        <h2>Uma equipa, quatro especialidades</h2>
+        <p>Cobrimos a cadeia técnica que mantém a sua casa, escritório ou operação a funcionar com segurança.</p>
+      </div>
+      <div class="svc-grid reveal">
+
+        <div class="svc-card">
+          <span class="svc-tag">Eléctrica</span>
+          <!--
+            FOTO — Instalação Eléctrica
+            Ficheiro: assets/images/servicos/instalacao-electrica.jpg
+            Dimensão: 800×450px, JPG ou WebP
+          -->
+          <img class="svc-photo" src="assets/images/servicos/instalação.jpeg"
+               alt="Instalação eléctrica realizada pela ElectroLink"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="svc-photo-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Foto — Instalação Eléctrica
+          </div>
+          <div class="svc-card-body">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+            <h3>Instalação Eléctrica</h3>
+            <p>Projectos e instalações eléctricas residenciais, comerciais e industriais com qualidade, segurança e conformidade normativa.</p>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <span class="svc-tag">Projecto</span>
+          <!-- FOTO: assets/images/servicos/projecto-electrico.jpg -->
+          <img class="svc-photo" src="assets/images/servicos/projecto-electrico.jpg"
+               alt="Projecto de instalação eléctrica"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="svc-photo-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Foto — Projecto Eléctrico
+          </div>
+          <div class="svc-card-body">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h13l3 3v13H4z"/><path d="M4 4l16 16M9 9h6M9 13h6"/></svg></div>
+            <h3>Projecto de Instalação Eléctrica</h3>
+            <p>Elaboração de projectos eléctricos com soluções eficientes, seguras e personalizadas para cada tipo de espaço.</p>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <span class="svc-tag">Manutenção</span>
+          <!-- FOTO: assets/images/servicos/manutencao-electrica.jpg -->
+          <img class="svc-photo" src="assets/images/servicos/manu.jpeg"
+               alt="Manutenção eléctrica"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="svc-photo-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Foto — Manutenção Eléctrica
+          </div>
+          <div class="svc-card-body">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 01-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 015.4-5.4l-3 3-2-2 3-3z"/></svg></div>
+            <h3>Manutenção Eléctrica</h3>
+            <p>Manutenção preventiva e correctiva para garantir o bom funcionamento das instalações e evitar falhas dispendiosas.</p>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <span class="svc-tag">Climatização</span>
+          <!-- FOTO: assets/images/servicos/refrigeracao.jpg -->
+          <img class="svc-photo" src="assets/images/servicos/refri.jpeg"
+               alt="Refrigeração e ar condicionado"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="svc-photo-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Foto — Refrigeração
+          </div>
+          <div class="svc-card-body">
+            <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M4.5 6l15 12M19.5 6l-15 12M2 12h20"/></svg></div>
+            <h3>Refrigeração</h3>
+            <p>Instalação, manutenção e reparação de sistemas de ar condicionado, câmaras frias e equipamentos de refrigeração.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COBERTURA ══ -->
+  <section id="cobertura" class="on-navy">
+    <div class="wrap coverage">
+      <div class="coverage-map reveal">
+        <svg viewBox="0 0 200 340" aria-hidden="true">
+          <path d="M60 10 L140 20 L150 70 L130 110 L150 150 L140 210 L160 260 L130 320 L90 330 L70 280 L50 220 L60 170 L40 120 L55 70 Z"
+                fill="rgba(240,194,75,0.06)" stroke="rgba(240,194,75,0.35)" stroke-width="1.5"/>
+          <circle class="prov-dot" cx="103" cy="300" r="5"/>
+          <circle class="prov-pulse" cx="103" cy="300" r="5">
+            <animate attributeName="r" values="5;16;5" dur="2.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;0;0.7" dur="2.8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow">Cobertura</div>
+        <h2 style="font-size:clamp(28px,3.4vw,40px);color:var(--white);margin-bottom:16px;">Presentes em Maputo</h2>
+        <p style="color:#a9b5cb;margin-bottom:30px;">Operamos com uma equipa técnica dedicada na cidade de Maputo e arredores.</p>
+        <div class="city-list">
+          <div class="city-row">
+            <span class="num">01</span>
+            <div><b>Maputo</b><span>Sede operacional e cobertura da cidade e arredores.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESSO ══ -->
+  <section id="processo" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow" style="justify-content:center;">Como trabalhamos</div>
+        <h2>Do diagnóstico ao suporte contínuo</h2>
+        <p>Um processo claro, pensado para dar previsibilidade a cada etapa do projecto.</p>
+      </div>
+      <div class="proc-track reveal">
+        <div class="proc-step"><div class="proc-num">01</div><h3>Diagnóstico</h3><p>Visita técnica e levantamento das necessidades do local.</p></div>
+        <div class="proc-step"><div class="proc-num">02</div><h3>Proposta</h3><p>Orçamento detalhado com prazos e materiais definidos.</p></div>
+        <div class="proc-step"><div class="proc-num">03</div><h3>Instalação</h3><p>Execução pela equipa certificada, com testes de qualidade.</p></div>
+        <div class="proc-step"><div class="proc-num">04</div><h3>Suporte</h3><p>Manutenção e acompanhamento após a entrega do projecto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MODAL OPORTUNIDADES ══ -->
+  <div class="modal-overlay" id="modalOportunidades" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Fechar">✕</button>
+      <div style="padding:48px 32px;">
+        <div class="section-head reveal in">
+          <div class="eyebrow">Faça parte da equipa</div>
+          <h2>Oportunidades com a ElectroLink</h2>
+          <p>Vagas de emprego abertas e outras oportunidades de colaboração com a nossa equipa.</p>
+        </div>
+        <div class="jobs-toolbar">
+          <span>Vagas activas</span>
+          <span class="city-pill">📍 Maputo</span>
+        </div>
+        <!-- Preenchido pelo admin.js via localStorage -->
+        <div class="jobs-list" id="jobs-list-public"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DRAWER CANDIDATURA (abre ao clicar "Candidatar-me") ══ -->
+  <div class="drawer-overlay modal-overlay" id="candidaturaDrawer">
+    <div class="modal-panel" style="max-width:520px;">
+      <button class="modal-close" onclick="fecharCandidatura()" aria-label="Fechar">✕</button>
+      <div style="padding:36px 32px;">
+        <h2 style="margin-bottom:6px;">Candidatura</h2>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:24px;">Vaga: <strong id="cand-vaga-label"></strong></p>
+        <form id="formCandidatura" onsubmit="submeterCandidatura(event)">
+          <input type="hidden" id="cand-vaga-id">
+          <input type="hidden" id="cand-vaga-titulo">
+          <div class="form-group"><label>Nome completo *</label><input id="cand-nome" type="text" required placeholder="O teu nome"></div>
+          <div class="form-group"><label>Email *</label><input id="cand-email" type="email" required placeholder="oseu@email.com"></div>
+          <div class="form-group"><label>Telefone</label><input id="cand-tel" type="tel" placeholder="84 000 0000"></div>
+          <div class="form-group"><label>Localidade</label><input id="cand-local" type="text" placeholder="Bairro / Cidade"></div>
+          <div class="form-group"><label>Carta de motivação</label><textarea id="cand-carta" rows="4" placeholder="Descreve brevemente a tua experiência e motivação…"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Enviar candidatura</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PARCEIROS ══ -->
+  <div class="partners-strip">
+    <div class="wrap">
+      <p class="partners-label">Em parceria com</p>
+      <div class="partners-row reveal">
+        <!-- Actualizar com os parceiros reais -->
+        <span class="partner-chip">Ponto a Ponto Logística</span>
+        <span class="partner-chip">Engitech</span>
+        <span class="partner-chip">ClimaCool</span>
+        <span class="partner-chip">ElectroSol</span>
+        <span class="partner-chip">SafeWork</span>
+        <span class="partner-chip">MLN Engenharia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DEPOIMENTOS ══ -->
+  <section id="depoimentos">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow" style="justify-content:center;">Depoimentos</div>
+        <h2>O que dizem os nossos clientes</h2>
+      </div>
+      <div class="testi-grid reveal">
+        <!--
+          DEPOIMENTOS REAIS
+          Substitui os três blocos abaixo por depoimentos reais fornecidos pelo cliente.
+          Iniciais do avatar: primeiras letras do nome (ex: "JS" para João Silva).
+        -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <div class="testi-who">
+            <div class="testi-avatar">—</div>
+            <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <div class="testi-who">
+            <div class="testi-avatar">—</div>
+            <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <div class="testi-who">
+            <div class="testi-avatar">—</div>
+            <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section id="faq" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <div class="eyebrow" style="justify-content:center;">Perguntas frequentes</div>
+        <h2>Ainda tem dúvidas?</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Fazem orçamento sem compromisso? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Sim, a visita técnica de diagnóstico e a proposta inicial não têm custo nem obrigam à contratação do serviço.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Trabalham com empresas e não apenas residências? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Sim, atendemos clientes residenciais, comerciais e industriais, com projectos dimensionados conforme a escala de cada operação.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Que garantia é dada sobre as instalações? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Todos os serviços incluem garantia sobre a mão-de-obra, com prazos que variam conforme o tipo de instalação — detalhados em cada proposta.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Que zonas de Maputo conseguem atender? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Temos uma equipa fixa em Maputo e cobrimos a cidade e arredores.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACTO ══ -->
+  <section id="contacto" class="on-navy">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Fale connosco</div>
+        <h2 style="font-size:clamp(28px,3.4vw,40px);color:var(--white);margin-bottom:16px;">Ligue-se à confiança</h2>
+        <p style="color:#a9b5cb;margin-bottom:30px;">Peça o seu orçamento sem compromisso. A nossa equipa responde em até 24 horas úteis.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.4a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg></div>
+            <div>
+              <b>Telefone / WhatsApp</b>
+              <!-- Inserir número real -->
+              <span>[inserir número de contacto]</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div>
+            <div>
+              <b>Email</b>
+              <!-- Inserir email real -->
+              <span>[inserir email]</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+            <div>
+              <b>Morada</b>
+              <!-- Inserir morada real -->
+              <span>[inserir morada — Maputo, Moçambique]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-group"><label>Nome completo</label><input type="text" required placeholder="O seu nome"></div>
+        <div class="form-group"><label>Telefone</label><input type="tel" required placeholder="84 000 0000"></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="oseu@email.com"></div>
+        <div class="form-group">
+          <label>Serviço pretendido</label>
+          <select required>
+            <option value="">Selecione uma opção</option>
+            <option>Instalação Eléctrica</option>
+            <option>Projecto de Instalação Eléctrica</option>
+            <option>Manutenção Eléctrica</option>
+            <option>Refrigeração</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Localidade</label><input type="text" placeholder="Cidade / Bairro"></div>
+        <div class="form-group"><label>Mensagem</label><textarea rows="4" placeholder="Descreva brevemente o que precisa"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar pedido</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="logo" href="#top" style="margin-bottom:16px;display:inline-flex;">
+          <!--
+            LOGOTIPO — FOOTER
+            Versão clara/branca recomendada para fundo escuro.
+            Ficheiro: assets/images/logo-electrolink.png
+          -->
+          <img class="logo-img" src="assets/images/logo-electrolink.png" alt="ElectroLink"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+          <span class="logo-word" style="display:none;">Electro<span>Link</span></span>
+        </a>
+        <p>Instalação e manutenção eléctrica e refrigeração na cidade de Maputo.</p>
+        <div class="footer-contact">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.4a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg>[telefone]</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>[email]</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#processo">Como trabalhamos</a></li>
+          <li><a href="#" class="js-open-oportunidades">Oportunidades</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Instalação Eléctrica</a></li>
+          <li><a href="#servicos">Projecto Eléctrico</a></li>
+          <li><a href="#servicos">Manutenção</a></li>
+          <li><a href="#servicos">Refrigeração</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="admin/index.html">Área reservada</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElectroLink. Todos os direitos reservados.</span>
+      <span>Maputo, Moçambique</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
