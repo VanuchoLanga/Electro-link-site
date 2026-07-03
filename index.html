@@ -16,14 +16,6 @@
 </head>
 <body>
 
-<!-- ── DECORAÇÃO LATERAL (fixed, não afecta layout) ── -->
-<div class="spine" aria-hidden="true">
-  <svg preserveAspectRatio="none" style="position:fixed;top:0;left:0;width:2px;height:100%;pointer-events:none;">
-    <line class="spine-line" x1="1" y1="0" x2="1" y2="100%"/>
-    <line class="spine-pulse" x1="1" y1="0" x2="1" y2="100%"/>
-  </svg>
-</div>
-
 <!-- ══ HEADER ══ -->
 <header>
   <nav class="wrap">
@@ -35,12 +27,34 @@
       -->
       <img class="logo-img" src="assets/images/logo-electrolink.png" alt="ElectroLink"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span style="display:none;">
+      <span style="display:none; flex-direction:column;">
         <span class="logo-word">Electro<span>Link</span></span>
+        <span class="logo-tag">Energia · Redes · Confiança</span>
       </span>
+      <!-- Quando o PNG existe, a tagline aparece por baixo da imagem -->
+      <span class="logo-tag-img">Energia · Redes · Confiança</span>
     </a>
 
-    <ul class="nav-links" id="navLinks">
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-ghost hide-mobile" style="padding:10px 20px;font-size:15px;">Pedir Orçamento</a>
+      <ul class="nav-links hide-mobile" id="navLinksDesktop">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#cobertura">Cobertura</a></li>
+        <li><a href="#processo">Como Trabalhamos</a></li>
+        <li><a href="#" class="js-open-oportunidades">Oportunidades</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menu mobile — fora do nav para não ser cortado pelo overflow -->
+  <div class="mobile-menu" id="navLinks">
+    <ul>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
       <li><a href="#processo">Como Trabalhamos</a></li>
@@ -49,14 +63,10 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-
-    <div class="nav-cta">
-      <a href="#contacto" class="btn btn-ghost" style="padding:10px 20px;font-size:15px;">Pedir Orçamento</a>
-      <button class="burger" id="burger" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="mobile-menu-cta">
+      <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center;">Pedir Orçamento</a>
     </div>
-  </nav>
+  </div>
 </header>
 
 <main id="top">

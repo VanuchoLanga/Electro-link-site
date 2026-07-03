@@ -28,6 +28,21 @@
 html { scroll-behavior:smooth; }
 body { font-family:'Inter',sans-serif; background:var(--white); color:var(--navy-deep); line-height:1.6; -webkit-font-smoothing:antialiased; }
 a { text-decoration:none; color:inherit; }
+/* ── SPINE (decoração lateral) ── */
+.spine {
+  position:fixed; left:0; top:0; bottom:0;
+  width:2px; z-index:50; pointer-events:none;
+}
+.spine svg { width:2px; height:100%; display:block; }
+.spine-line { stroke:rgba(240,194,75,0.12); stroke-width:1; }
+.spine-pulse {
+  stroke:var(--gold-bright); stroke-width:1.5;
+  stroke-dasharray:40 200;
+  animation:spine-move 3s linear infinite;
+}
+@keyframes spine-move { to { stroke-dashoffset:-240; } }
+@media(max-width:768px) { .spine { display:none; } }
+
 ul { list-style:none; }
 button { cursor:pointer; font-family:inherit; border:none; background:none; }
 img { display:block; max-width:100%; }
@@ -71,32 +86,56 @@ header {
   border-bottom:1px solid var(--line);
 }
 nav { display:flex; align-items:center; justify-content:space-between; height:68px; }
-.logo { display:flex; align-items:center; gap:10px; }
+
+/* Logo */
+.logo { display:flex; align-items:center; gap:10px; flex-shrink:0; }
 .logo img.logo-img { height:38px; width:auto; }
-/* fallback texto quando logo PNG não existe */
 .logo-word { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:22px; color:var(--white); letter-spacing:-0.01em; }
 .logo-word span { color:var(--gold-bright); }
-.logo-tag { font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray-400); display:block; line-height:1; margin-top:2px; }
+.logo-tag { font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray-400); display:block; line-height:1; margin-top:3px; }
+.logo-tag-img { font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray-400); display:block; line-height:1; margin-top:3px; }
 
-.nav-links { display:flex; align-items:center; gap:4px; }
-.nav-links a { font-size:14px; font-weight:500; color:var(--gray-400); padding:6px 12px; border-radius:6px; transition:color var(--transition); }
+/* Nav desktop */
+.nav-links { display:flex; align-items:center; gap:2px; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--gray-400); padding:6px 10px; border-radius:6px; transition:color var(--transition); white-space:nowrap; }
 .nav-links a:hover, .nav-links a.active { color:var(--white); }
 .nav-cta { display:flex; align-items:center; gap:10px; }
 
-/* Hambúrguer mobile */
-.burger { display:none; flex-direction:column; gap:5px; padding:4px; }
-.burger span { width:22px; height:2px; background:var(--white); border-radius:2px; transition:var(--transition); display:block; }
+/* Hambúrguer */
+.burger { display:none; flex-direction:column; gap:5px; padding:6px; cursor:pointer; }
+.burger span { width:22px; height:2px; background:var(--white); border-radius:2px; transition:transform 0.25s ease, opacity 0.2s ease; display:block; transform-origin:center; }
+
+/* Menu mobile — drawer de cima para baixo */
+.mobile-menu {
+  display:none;
+  position:fixed;
+  top:68px; left:0; right:0; bottom:0;
+  background:var(--navy-deep);
+  z-index:999;
+  overflow-y:auto;
+  flex-direction:column;
+  padding:8px 0 32px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+  border-top:1px solid var(--line);
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu ul { display:flex; flex-direction:column; }
+.mobile-menu ul li { border-bottom:1px solid var(--line); }
+.mobile-menu ul a {
+  display:block; padding:18px 28px;
+  font-size:18px; font-weight:600; font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.04em; text-transform:uppercase;
+  color:var(--gray-400); transition:color 0.15s, background 0.15s;
+}
+.mobile-menu ul a:hover { color:var(--gold-bright); background:rgba(255,255,255,0.04); }
+.mobile-menu-cta { padding:24px 28px; }
+
 @media(max-width:900px) {
   .burger { display:flex; }
-  .nav-links {
-    display:none; flex-direction:column; align-items:flex-start; gap:0;
-    position:fixed; top:68px; left:0; right:0; bottom:0;
-    background:var(--navy-deep); padding:20px 0; overflow-y:auto;
-    z-index:99;
-  }
-  .nav-links.open { display:flex; }
-  .nav-links a { padding:14px 24px; width:100%; font-size:16px; border-radius:0; border-bottom:1px solid var(--line); }
-  .nav-cta .btn:first-child { display:none; }
+  .hide-mobile { display:none !important; }
+}
+@media(min-width:901px) {
+  .mobile-menu { display:none !important; }
 }
 
 /* ── HERO ── */
