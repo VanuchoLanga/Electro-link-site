@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // 1. Enviar para Formspree (email)
-        const res = await fetch('https://formspree.io/f/xykqlpwp', {
+        const res = await fetch('https://formspree.io/f/xlgyalaj', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' },
