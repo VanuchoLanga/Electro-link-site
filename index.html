@@ -3,57 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ElectroLink — Instalação eléctrica, manutenção e refrigeração em Maputo, Moçambique. Soluções técnicas com qualidade certificada.">
+  <meta name="description" content="ElectroLink — Instalação eléctrica, manutenção e refrigeração em Maputo, Moçambique.">
   <title>ElectroLink — Energia e Confiança em Maputo</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
 <!-- ══ HEADER ══ -->
-<header>
+<header id="site-header">
   <nav class="wrap">
+
+    <!-- LOGO -->
     <a class="logo" href="#top">
-      <!--
-        LOGOTIPO — substitui pelo PNG do cliente.
-        Ficheiro: assets/images/logo-electrolink.png
-        Altura recomendada: 38–42px, fundo transparente.
-      -->
+      <!-- Substitui src pelo PNG do cliente: assets/images/logo-electrolink.png -->
       <img class="logo-img" src="assets/images/logo-electrolink.png" alt="ElectroLink"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span style="display:none; flex-direction:column;">
+      <span class="logo-text-fallback">
         <span class="logo-word">Electro<span>Link</span></span>
         <span class="logo-tag">Energia · Redes · Confiança</span>
       </span>
-      <!-- Quando o PNG existe, a tagline aparece por baixo da imagem -->
-      <span class="logo-tag-img">Energia · Redes · Confiança</span>
     </a>
 
-    <div class="nav-cta">
-      <a href="#contacto" class="btn btn-ghost hide-mobile" style="padding:10px 20px;font-size:15px;">Pedir Orçamento</a>
-      <ul class="nav-links hide-mobile" id="navLinksDesktop">
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#cobertura">Cobertura</a></li>
-        <li><a href="#processo">Como Trabalhamos</a></li>
-        <li><a href="#" class="js-open-oportunidades">Oportunidades</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-      <button class="burger" id="burger" aria-label="Abrir menu">
+    <!-- LINKS DESKTOP -->
+    <ul class="nav-links" id="navLinksDesktop">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#cobertura">Cobertura</a></li>
+      <li><a href="#processo">Como Trabalhamos</a></li>
+      <li><a href="#" class="js-open-oportunidades">Oportunidades</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <!-- CTA + BURGER -->
+    <div class="nav-actions">
+      <a href="#contacto" class="btn btn-gold nav-cta-btn">Pedir Orçamento</a>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
+
   </nav>
 
-  <!-- Menu mobile — fora do nav para não ser cortado pelo overflow -->
-  <div class="mobile-menu" id="navLinks">
+  <!-- MENU MOBILE (dentro do header mas fora do nav) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <ul>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
@@ -63,8 +59,8 @@
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <div class="mobile-menu-cta">
-      <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center;">Pedir Orçamento</a>
+    <div class="mobile-menu-footer">
+      <a href="#contacto" class="btn btn-gold" id="mobileCta">Pedir Orçamento</a>
     </div>
   </div>
 </header>
@@ -73,24 +69,20 @@
 
   <!-- ══ HERO ══ -->
   <section class="hero">
-    <!--
-      VÍDEO DE FUNDO
-      Ficheiro: assets/video/apresentacao.mp4
-      Corre em loop silencioso no fundo.
-    -->
+    <!-- Vídeo de fundo: colocar ficheiro em assets/video/apresentacao.mp4 -->
     <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="assets/video/apresentacao.mp4" type="video/mp4">
     </video>
+    <div class="hero-overlay"></div>
 
     <div class="wrap hero-inner">
-      <div>
+      <div class="hero-content">
         <div class="eyebrow" style="color:var(--gold-bright);">Maputo</div>
         <h1>Conectamos <span class="hl">energia</span> e <span class="hl">confiança</span> em Maputo</h1>
         <p class="lead">Electricidade, manutenção e refrigeração — soluções técnicas com segurança e qualidade certificadas.</p>
         <div class="hero-ctas">
-          <a href="#contacto" class="btn btn-primary">Pedir orçamento</a>
-          <a href="#servicos" class="btn btn-ghost">Ver serviços</a>
-          <!-- Abre o vídeo de apresentação completo -->
+          <a href="#contacto" class="btn btn-gold">Pedir orçamento</a>
+          <a href="#servicos" class="btn btn-outline-white">Ver serviços</a>
           <button class="btn-play" id="btnPlay" aria-label="Ver vídeo de apresentação">
             <span class="play-icon">
               <svg viewBox="0 0 12 12"><polygon points="3,1 11,6 3,11"/></svg>
@@ -114,8 +106,8 @@
     </div>
   </section>
 
-  <!-- Modal do vídeo de apresentação -->
-  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Vídeo de apresentação ElectroLink">
+  <!-- Modal vídeo -->
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Vídeo de apresentação">
     <div class="video-modal-inner">
       <button class="video-modal-close" id="videoModalClose" aria-label="Fechar">✕</button>
       <video id="presentationVideo" controls preload="none">
@@ -126,7 +118,7 @@
 
   <!-- ══ DIFERENCIAIS ══ -->
   <section class="on-navy" style="padding:0;">
-    <div class="wrap" style="padding:0 24px;transform:translateY(-1px);">
+    <div class="wrap" style="padding:0 24px;">
       <div class="diff-grid reveal">
         <div class="diff-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
@@ -164,13 +156,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Eléctrica</span>
-          <!--
-            FOTO — Instalação Eléctrica
-            Ficheiro: assets/images/servicos/instalacao-electrica.jpg
-            Dimensão: 800×450px, JPG ou WebP
-          -->
-          <img class="svc-photo" src="assets/images/servicos/instalacao-electrica.jpg"
-               alt="Instalação eléctrica realizada pela ElectroLink"
+          <img class="svc-photo" src="assets/images/servicos/instalacao-electrica.jpg" alt="Instalação eléctrica"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -185,9 +171,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Projecto</span>
-          <!-- FOTO: assets/images/servicos/projecto-electrico.jpg -->
-          <img class="svc-photo" src="assets/images/servicos/projecto-electrico.jpg"
-               alt="Projecto de instalação eléctrica"
+          <img class="svc-photo" src="assets/images/servicos/projecto-electrico.jpg" alt="Projecto eléctrico"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -202,9 +186,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Manutenção</span>
-          <!-- FOTO: assets/images/servicos/manutencao-electrica.jpg -->
-          <img class="svc-photo" src="assets/images/servicos/manutencao-electrica.jpg"
-               alt="Manutenção eléctrica"
+          <img class="svc-photo" src="assets/images/servicos/manutencao-electrica.jpg" alt="Manutenção eléctrica"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -219,9 +201,7 @@
 
         <div class="svc-card">
           <span class="svc-tag">Climatização</span>
-          <!-- FOTO: assets/images/servicos/refrigeracao.jpg -->
-          <img class="svc-photo" src="assets/images/servicos/refrigeracao.jpg"
-               alt="Refrigeração e ar condicionado"
+          <img class="svc-photo" src="assets/images/servicos/refrigeracao.jpg" alt="Refrigeração"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="svc-photo-placeholder" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -254,7 +234,7 @@
       </div>
       <div>
         <div class="eyebrow">Cobertura</div>
-        <h2 style="font-size:clamp(28px,3.4vw,40px);color:var(--white);margin-bottom:16px;">Presentes em Maputo</h2>
+        <h2 style="color:var(--white);margin-bottom:16px;">Presentes em Maputo</h2>
         <p style="color:#a9b5cb;margin-bottom:30px;">Operamos com uma equipa técnica dedicada na cidade de Maputo e arredores.</p>
         <div class="city-list">
           <div class="city-row">
@@ -275,10 +255,26 @@
         <p>Um processo claro, pensado para dar previsibilidade a cada etapa do projecto.</p>
       </div>
       <div class="proc-track reveal">
-        <div class="proc-step"><div class="proc-num">01</div><h3>Diagnóstico</h3><p>Visita técnica e levantamento das necessidades do local.</p></div>
-        <div class="proc-step"><div class="proc-num">02</div><h3>Proposta</h3><p>Orçamento detalhado com prazos e materiais definidos.</p></div>
-        <div class="proc-step"><div class="proc-num">03</div><h3>Instalação</h3><p>Execução pela equipa certificada, com testes de qualidade.</p></div>
-        <div class="proc-step"><div class="proc-num">04</div><h3>Suporte</h3><p>Manutenção e acompanhamento após a entrega do projecto.</p></div>
+        <div class="proc-step">
+          <div class="proc-num">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Visita técnica e levantamento das necessidades do local.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-num">02</div>
+          <h3>Proposta</h3>
+          <p>Orçamento detalhado com prazos e materiais definidos.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-num">03</div>
+          <h3>Instalação</h3>
+          <p>Execução pela equipa certificada, com testes de qualidade.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-num">04</div>
+          <h3>Suporte</h3>
+          <p>Manutenção e acompanhamento após a entrega do projecto.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -288,23 +284,22 @@
     <div class="modal-panel">
       <button class="modal-close" id="modalCloseBtn" aria-label="Fechar">✕</button>
       <div style="padding:48px 32px;">
-        <div class="section-head reveal in">
+        <div class="section-head">
           <div class="eyebrow">Faça parte da equipa</div>
           <h2>Oportunidades com a ElectroLink</h2>
-          <p>Vagas de emprego abertas e outras oportunidades de colaboração com a nossa equipa.</p>
+          <p>Vagas de emprego abertas e oportunidades de colaboração com a nossa equipa.</p>
         </div>
         <div class="jobs-toolbar">
           <span>Vagas activas</span>
           <span class="city-pill">📍 Maputo</span>
         </div>
-        <!-- Preenchido pelo admin.js via localStorage -->
         <div class="jobs-list" id="jobs-list-public"></div>
       </div>
     </div>
   </div>
 
-  <!-- ══ DRAWER CANDIDATURA (abre ao clicar "Candidatar-me") ══ -->
-  <div class="drawer-overlay modal-overlay" id="candidaturaDrawer">
+  <!-- Drawer candidatura -->
+  <div class="modal-overlay" id="candidaturaDrawer">
     <div class="modal-panel" style="max-width:520px;">
       <button class="modal-close" onclick="fecharCandidatura()" aria-label="Fechar">✕</button>
       <div style="padding:36px 32px;">
@@ -318,7 +313,7 @@
           <div class="form-group"><label>Telefone</label><input id="cand-tel" type="tel" placeholder="84 000 0000"></div>
           <div class="form-group"><label>Localidade</label><input id="cand-local" type="text" placeholder="Bairro / Cidade"></div>
           <div class="form-group"><label>Carta de motivação</label><textarea id="cand-carta" rows="4" placeholder="Descreve brevemente a tua experiência e motivação…"></textarea></div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;">Enviar candidatura</button>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px;">Enviar candidatura</button>
         </form>
       </div>
     </div>
@@ -329,7 +324,6 @@
     <div class="wrap">
       <p class="partners-label">Em parceria com</p>
       <div class="partners-row reveal">
-        <!-- Actualizar com os parceiros reais -->
         <span class="partner-chip">Ponto a Ponto Logística</span>
         <span class="partner-chip">Engitech</span>
         <span class="partner-chip">ClimaCool</span>
@@ -348,14 +342,9 @@
         <h2>O que dizem os nossos clientes</h2>
       </div>
       <div class="testi-grid reveal">
-        <!--
-          DEPOIMENTOS REAIS
-          Substitui os três blocos abaixo por depoimentos reais fornecidos pelo cliente.
-          Iniciais do avatar: primeiras letras do nome (ex: "JS" para João Silva).
-        -->
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
-          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <p>"Substituir por depoimento real antes de publicar."</p>
           <div class="testi-who">
             <div class="testi-avatar">—</div>
             <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
@@ -363,7 +352,7 @@
         </div>
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
-          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <p>"Substituir por depoimento real antes de publicar."</p>
           <div class="testi-who">
             <div class="testi-avatar">—</div>
             <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
@@ -371,7 +360,7 @@
         </div>
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
-          <p>"Espaço para depoimento real — substituir antes de publicar."</p>
+          <p>"Substituir por depoimento real antes de publicar."</p>
           <div class="testi-who">
             <div class="testi-avatar">—</div>
             <div><b>Nome do cliente</b><span>Empresa / Localidade</span></div>
@@ -414,36 +403,23 @@
     <div class="wrap contact-grid">
       <div>
         <div class="eyebrow">Fale connosco</div>
-        <h2 style="font-size:clamp(28px,3.4vw,40px);color:var(--white);margin-bottom:16px;">Ligue-se à confiança</h2>
+        <h2 style="color:var(--white);margin-bottom:16px;">Ligue-se à confiança</h2>
         <p style="color:#a9b5cb;margin-bottom:30px;">Peça o seu orçamento sem compromisso. A nossa equipa responde em até 24 horas úteis.</p>
         <div class="contact-info">
           <div class="contact-item">
             <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.4a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg></div>
-            <div>
-              <b>Telefone / WhatsApp</b>
-              <!-- Inserir número real -->
-              <span>[inserir número de contacto]</span>
-            </div>
+            <div><b>Telefone / WhatsApp</b><span>[inserir número]</span></div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg></div>
-            <div>
-              <b>Email</b>
-              <!-- Inserir email real -->
-              <span>[inserir email]</span>
-            </div>
+            <div><b>Email</b><span>[inserir email]</span></div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.4 7-12.5A7 7 0 105 9.5C5 14.6 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-            <div>
-              <b>Morada</b>
-              <!-- Inserir morada real -->
-              <span>[inserir morada — Maputo, Moçambique]</span>
-            </div>
+            <div><b>Morada</b><span>[inserir morada, Maputo]</span></div>
           </div>
         </div>
       </div>
-
       <form class="contact-form" id="contactForm">
         <div class="form-group"><label>Nome completo</label><input type="text" required placeholder="O seu nome"></div>
         <div class="form-group"><label>Telefone</label><input type="tel" required placeholder="84 000 0000"></div>
@@ -461,7 +437,7 @@
         </div>
         <div class="form-group"><label>Localidade</label><input type="text" placeholder="Cidade / Bairro"></div>
         <div class="form-group"><label>Mensagem</label><textarea rows="4" placeholder="Descreva brevemente o que precisa"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar pedido</button>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Enviar pedido</button>
       </form>
     </div>
   </section>
@@ -473,15 +449,13 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col">
-        <a class="logo" href="#top" style="margin-bottom:16px;display:inline-flex;">
-          <!--
-            LOGOTIPO — FOOTER
-            Versão clara/branca recomendada para fundo escuro.
-            Ficheiro: assets/images/logo-electrolink.png
-          -->
+        <a class="logo" href="#top" style="margin-bottom:14px;display:inline-flex;">
           <img class="logo-img" src="assets/images/logo-electrolink.png" alt="ElectroLink"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
-          <span class="logo-word" style="display:none;">Electro<span>Link</span></span>
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="logo-text-fallback">
+            <span class="logo-word">Electro<span>Link</span></span>
+            <span class="logo-tag">Energia · Redes · Confiança</span>
+          </span>
         </a>
         <p>Instalação e manutenção eléctrica e refrigeração na cidade de Maputo.</p>
         <div class="footer-contact">
@@ -512,7 +486,7 @@
         <h4>Empresa</h4>
         <ul>
           <li><a href="#contacto">Contacto</a></li>
-          <li><a href="admin/index.html">Área reservada</a></li>
+          <li><a href="admin/">Área reservada</a></li>
         </ul>
       </div>
     </div>
@@ -523,8 +497,6 @@
   </div>
 </footer>
 
-<!-- Scripts -->
 <script src="assets/js/main.js"></script>
-
 </body>
 </html>

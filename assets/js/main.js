@@ -1,161 +1,142 @@
-/* ═══════════════════════════════════════════════
-   ElectroLink — main.js
-   ═══════════════════════════════════════════════ */
+/* ElectroLink — main.js */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── REVEAL AO SCROLL ──────────────────────────
-  const revealEls = document.querySelectorAll('.reveal');
+  /* ── REVEAL AO SCROLL ── */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── MOBILE NAV ────────────────────────────────
+  /* ── MENU MOBILE ── */
   const burger     = document.getElementById('burger');
-  const mobileMenu = document.getElementById('navLinks');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-  function closeMobileMenu() {
-    if (!mobileMenu) return;
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('modal-open');
+    const s = burger.querySelectorAll('span');
+    s[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    s[1].style.opacity   = '0';
+    s[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  }
+
+  function closeMenu() {
     mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-    const spans = burger.querySelectorAll('span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity   = '';
-    spans[2].style.transform = '';
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('modal-open');
+    const s = burger.querySelectorAll('span');
+    s[0].style.transform = '';
+    s[1].style.opacity   = '';
+    s[2].style.transform = '';
   }
 
-  if (burger && mobileMenu) {
-    burger.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-      const spans = burger.querySelectorAll('span');
-      if (isOpen) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity   = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-      } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity   = '';
-        spans[2].style.transform = '';
-      }
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Fechar ao clicar num link
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      closeMenu();
+      // pequeno delay para o scroll funcionar
+      setTimeout(() => {}, 100);
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => closeMobileMenu());
-    });
-  }
+  });
 
-  // ── HEADER SCROLL ─────────────────────────────
-  const header = document.querySelector('header');
-  if (header) {
-    window.addEventListener('scroll', () => {
-      header.style.background = window.scrollY > 40
-        ? 'rgba(8,19,43,0.99)'
-        : 'rgba(8,19,43,0.97)';
-    }, { passive: true });
-  }
+  /* ── MODAL OPORTUNIDADES ── */
+  const modalOp  = document.getElementById('modalOportunidades');
+  const closeBtn = document.getElementById('modalCloseBtn');
 
-  // ── MODAL OPORTUNIDADES ───────────────────────
-  const modalOp      = document.getElementById('modalOportunidades');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const openBtns     = document.querySelectorAll('.js-open-oportunidades');
-
-  function openModal() {
-    if (!modalOp) return;
+  function openOportunidades(e) {
+    if (e) e.preventDefault();
     modalOp.classList.add('open');
     modalOp.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+    renderVagasPublicas();
   }
-  function closeModal() {
-    if (!modalOp) return;
+  function closeOportunidades() {
     modalOp.classList.remove('open');
     modalOp.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
 
-  openBtns.forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-  if (modalOp) modalOp.addEventListener('click', (e) => { if (e.target === modalOp) closeModal(); });
+  document.querySelectorAll('.js-open-oportunidades').forEach(b => b.addEventListener('click', openOportunidades));
+  closeBtn.addEventListener('click', closeOportunidades);
+  modalOp.addEventListener('click', e => { if (e.target === modalOp) closeOportunidades(); });
 
-  // ── MODAL VÍDEO ───────────────────────────────
-  const videoModal      = document.getElementById('videoModal');
-  const presentationVid = document.getElementById('presentationVideo');
-  const btnPlay         = document.getElementById('btnPlay');
-  const videoClose      = document.getElementById('videoModalClose');
+  /* ── MODAL VÍDEO ── */
+  const videoModal = document.getElementById('videoModal');
+  const videoEl    = document.getElementById('presentationVideo');
+  const btnPlay    = document.getElementById('btnPlay');
+  const closeVid   = document.getElementById('videoModalClose');
 
-  function openVideoModal() {
-    if (!videoModal) return;
+  btnPlay.addEventListener('click', () => {
     videoModal.classList.add('open');
     document.body.classList.add('modal-open');
-    if (presentationVid) presentationVid.play().catch(() => {});
-  }
-  function closeVideoModal() {
-    if (!videoModal) return;
+    videoEl.play().catch(() => {});
+  });
+  function closeVideo() {
     videoModal.classList.remove('open');
     document.body.classList.remove('modal-open');
-    if (presentationVid) { presentationVid.pause(); presentationVid.currentTime = 0; }
+    videoEl.pause();
+    videoEl.currentTime = 0;
   }
+  closeVid.addEventListener('click', closeVideo);
+  videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideo(); });
 
-  if (btnPlay)     btnPlay.addEventListener('click', openVideoModal);
-  if (videoClose)  videoClose.addEventListener('click', closeVideoModal);
-  if (videoModal)  videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
-
-  // ── FAQ ───────────────────────────────────────
+  /* ── FAQ ── */
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
-      const item = q.closest('.faq-item');
+      const item   = q.closest('.faq-item');
       const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
   });
 
-  // ── FORMULÁRIO DE CONTACTO ────────────────────
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  /* ── FORMULÁRIO CONTACTO ── */
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const original = btn.textContent;
-      btn.textContent = 'A enviar…';
-      btn.disabled = true;
-      // Integração futura: substituir por fetch para backend ou Formspree
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'A enviar…'; btn.disabled = true;
       setTimeout(() => {
-        btn.textContent = 'Mensagem enviada ✓';
-        btn.style.background = '#1e8f4e';
-        contactForm.reset();
-        setTimeout(() => { btn.textContent = original; btn.disabled = false; btn.style.background = ''; }, 3000);
+        btn.textContent = 'Enviado ✓'; btn.style.background = '#1e8f4e';
+        form.reset();
+        setTimeout(() => { btn.textContent = 'Enviar pedido'; btn.disabled = false; btn.style.background = ''; }, 3000);
       }, 1200);
     });
   }
 
-  // ── VAGAS DO SITE (lidas do localStorage) ────
-  renderVagasPublicas();
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { closeModal(); closeVideoModal(); }
+  /* ── ESC fecha tudo ── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeOportunidades(); closeVideo(); closeMenu(); }
   });
+
+  /* ── VAGAS PÚBLICAS ── */
+  renderVagasPublicas();
 });
 
-// ── VAGAS PÚBLICAS (preenchidas pelo admin) ────────
+/* ── VAGAS (lidas do localStorage preenchido pelo admin) ── */
 function renderVagasPublicas() {
   const container = document.getElementById('jobs-list-public');
   if (!container) return;
-
   let db;
   try { db = JSON.parse(localStorage.getItem('electrolink_admin_db')) || {}; }
   catch { db = {}; }
-
   const vagas = (db.vagas || []).filter(v => v.estado === 'aberta');
-
   if (!vagas.length) {
-    container.innerHTML = `<p class="jobs-empty-note">Não há vagas abertas neste momento. Consulta esta página regularmente.</p>`;
+    container.innerHTML = '<p class="jobs-empty-note">Não há vagas abertas neste momento. Consulta esta página regularmente.</p>';
     return;
   }
-
   container.innerHTML = vagas.map(v => `
     <div class="job-row">
-      <div class="job-main">
+      <div>
         <div class="job-top-line">
           <span class="job-org">ElectroLink</span>
           <span class="job-city">📍 ${v.local || 'Maputo'}</span>
@@ -163,10 +144,10 @@ function renderVagasPublicas() {
         </div>
         <h3>${v.titulo}</h3>
         <p>${v.desc.length > 180 ? v.desc.slice(0,180) + '…' : v.desc}</p>
-        ${v.prazo ? `<p class="job-deadline">Prazo: <b>${formatDate(v.prazo)}</b> · ${v.contrato || ''} · ${v.num || 1} vaga(s)</p>` : ''}
+        ${v.prazo ? `<p class="job-deadline">Prazo: <b>${new Date(v.prazo).toLocaleDateString('pt-MZ',{day:'2-digit',month:'short',year:'numeric'})}</b></p>` : ''}
       </div>
       <div class="job-side">
-        <button class="btn btn-primary job-apply" onclick="abrirCandidatura('${v.id}','${escHtml(v.titulo)}')">
+        <button class="btn btn-gold" style="padding:10px 20px;font-size:14px;" onclick="abrirCandidatura('${v.id}','${(v.titulo||'').replace(/'/g,"\\'")}')">
           Candidatar-me
         </button>
       </div>
@@ -174,32 +155,17 @@ function renderVagasPublicas() {
   `).join('');
 }
 
-function formatDate(iso) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  return d.toLocaleDateString('pt-MZ', { day:'2-digit', month:'short', year:'numeric' });
-}
-
-function escHtml(s) {
-  return (s || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-}
-
-// ── FORMULÁRIO DE CANDIDATURA ─────────────────────
 function abrirCandidatura(vagaId, vagaTitulo) {
-  // Abre o formulário de candidatura — implementa um drawer ou redireciona para pages/candidatura.html
-  const drawer = document.getElementById('candidaturaDrawer');
-  if (drawer) {
-    document.getElementById('cand-vaga-id').value    = vagaId;
-    document.getElementById('cand-vaga-titulo').value = vagaTitulo;
-    document.getElementById('cand-vaga-label').textContent = vagaTitulo;
-    drawer.classList.add('open');
-    document.body.classList.add('modal-open');
-  }
+  document.getElementById('cand-vaga-id').value     = vagaId;
+  document.getElementById('cand-vaga-titulo').value  = vagaTitulo;
+  document.getElementById('cand-vaga-label').textContent = vagaTitulo;
+  document.getElementById('candidaturaDrawer').classList.add('open');
+  document.body.classList.add('modal-open');
 }
 
 function fecharCandidatura() {
-  const drawer = document.getElementById('candidaturaDrawer');
-  if (drawer) { drawer.classList.remove('open'); document.body.classList.remove('modal-open'); }
+  document.getElementById('candidaturaDrawer').classList.remove('open');
+  document.body.classList.remove('modal-open');
 }
 
 function submeterCandidatura(e) {
@@ -214,14 +180,11 @@ function submeterCandidatura(e) {
     carta:      document.getElementById('cand-carta').value.trim(),
   };
   if (!dados.nome || !dados.email) return;
-
   let db;
   try { db = JSON.parse(localStorage.getItem('electrolink_admin_db')) || { clientes:[], vagas:[], candidaturas:[] }; }
   catch { db = { clientes:[], vagas:[], candidaturas:[] }; }
-
-  db.candidaturas.push({ id: Date.now().toString(36), ...dados, estado:'pendente', data:new Date().toISOString() });
+  db.candidaturas.push({ id: Date.now().toString(36), ...dados, estado:'pendente', data: new Date().toISOString() });
   localStorage.setItem('electrolink_admin_db', JSON.stringify(db));
-
   fecharCandidatura();
   alert('Candidatura enviada com sucesso! Entraremos em contacto em breve.');
   document.getElementById('formCandidatura').reset();
