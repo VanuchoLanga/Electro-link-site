@@ -290,6 +290,25 @@ body.modal-open { overflow:hidden; }
 .partners-label { font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:0.2em; color:var(--gray-400); text-transform:uppercase; text-align:center; margin-bottom:20px; }
 .partners-row { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
 .partner-chip { padding:8px 18px; border-radius:999px; border:1px solid #dfe4ee; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:14px; color:var(--navy-mid); letter-spacing:0.02em; text-transform:uppercase; background:#f6f8fc; }
+.partner-logo-wrap {
+  display:flex; align-items:center; justify-content:center;
+  padding:12px 20px;
+  border-radius:10px;
+  border:1px solid var(--gray-200);
+  background:var(--white);
+  transition:border-color 0.2s, box-shadow 0.2s;
+  height:64px;
+}
+.partner-logo-wrap:hover {
+  border-color:var(--gold);
+  box-shadow:0 4px 16px rgba(201,162,39,0.12);
+}
+.partner-logo-wrap img {
+  height:36px; width:auto;
+  object-fit:contain; filter:grayscale(100%);
+  transition:filter 0.2s;
+}
+.partner-logo-wrap:hover img { filter:grayscale(0%); }
 
 /* ── TESTEMUNHOS ── */
 .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
