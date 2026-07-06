@@ -194,6 +194,10 @@ nav {
 .svc-icon svg { width:26px; height:26px; color:var(--navy-deep); }
 .svc-card h3 { font-size:21px; color:var(--navy-deep); margin-bottom:8px; }
 .svc-card p { color:var(--gray-600); font-size:14px; line-height:1.65; }
+@keyframes pulse-dot {
+  0%, 100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.5; transform:scale(1.4); }
+}
 
 /* ── COBERTURA ── */
 .coverage { display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
