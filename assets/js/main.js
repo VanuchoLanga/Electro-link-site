@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // 1. Enviar para Formspree
-        const res = await fetch('https://formspree.io/f/xykqlpwp', {
+        const res = await fetch('https://formspree.io/f/xlgyalaj', {
           method:'POST', body:new FormData(form), headers:{ 'Accept':'application/json' }
         })
         if (!res.ok) throw new Error()
