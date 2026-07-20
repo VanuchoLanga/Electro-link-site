@@ -1,0 +1,32 @@
+/* Anexar ao admin.css existente */
+
+/* Toast */
+.toast {
+  position:fixed; bottom:24px; right:24px; z-index:9999;
+  background:var(--navy-deep); color:var(--white);
+  padding:12px 20px; border-radius:10px; font-size:14px; font-weight:500;
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  opacity:0; transform:translateY(10px);
+  transition:opacity 0.25s, transform 0.25s;
+  pointer-events:none;
+}
+.toast.show { opacity:1; transform:translateY(0); }
+.toast-success { border-left:4px solid var(--green); }
+.toast-error   { border-left:4px solid var(--red); }
+
+/* Factura item row */
+.factura-item-row {
+  display:flex; align-items:center; gap:8px;
+  padding:8px 0; border-bottom:1px solid var(--gray-200);
+  flex-wrap:wrap;
+}
+.factura-item-row input {
+  border:1px solid var(--gray-200); border-radius:6px;
+  padding:7px 10px; font-size:13px; color:var(--navy-deep);
+  outline:none; font-family:'Inter',sans-serif;
+}
+.factura-item-row input:focus { border-color:var(--gold); }
+
+/* Btn approve */
+.btn-a.approve { color:var(--green); border-color:rgba(30,143,78,0.3); }
+.btn-a.approve:hover { background:var(--green); color:var(--white); }
